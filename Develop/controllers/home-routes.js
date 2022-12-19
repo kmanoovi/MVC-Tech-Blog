@@ -1,6 +1,9 @@
 const router = require("express").Router()
 const {Post, User, Comment} = require("../models/")
 
+router.get("/", (req, res) => {
+    res.render("homepage")
+})
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.FindAll({
@@ -14,5 +17,11 @@ router.get("/", async (req, res) => {
     } catch (err){
         res.status(500).json(err)
     }
-}
-)
+})
+
+
+module.exports = router
+
+// app.get('/', (req, res) => {
+//     res.render('home');
+// })
